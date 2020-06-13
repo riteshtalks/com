@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="31220" started-at="2020-06-13T17:23:58Z" finished-at="2020-06-13T17:24:30Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="31220" started-at="2020-06-13T17:23:58Z" finished-at="2020-06-13T17:24:30Z">
+      <class name="naukri.com.AppTestTest">
+        <test-method status="PASS" signature="AppTest()[pri:0, instance:naukri.com.AppTestTest@6d78f375]" name="AppTest" duration-ms="31201" started-at="2020-06-13T22:53:58Z" finished-at="2020-06-13T22:54:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AppTest -->
+      </class> <!-- naukri.com.AppTestTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
