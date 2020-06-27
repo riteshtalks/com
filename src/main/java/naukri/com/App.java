@@ -1,5 +1,7 @@
 package naukri.com;
 
+import java.io.IOException;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -15,7 +17,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  *
  */
 public class App {
-	public static void runtest() throws InterruptedException {
+	public static void runtest() throws InterruptedException, IOException {
+		
+		 Random rand = new Random();
+		 readProperties props = new readProperties();
 		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
 
 		// Initialize browser
@@ -25,7 +30,13 @@ public class App {
 		driver.get("https://www.naukri.com");
 
 		// Maximize browser
+		
+		
+		
+		String email = props.readPropertiesName("EMAIL");
+		String password = props.readPropertiesName("PASSWORD");
 
+		System.out.println(props.readPropertiesName("EMAIL"));
 		driver.manage().window().maximize();
 
 		driver.findElement(By.xpath("//*[@id=\"login_Layer\"]/div")).click();
@@ -34,9 +45,8 @@ public class App {
 		wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//*[@id=\"root\"]/div[2]/div[2]/div/form/div[2]/input")));
 
-		driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div[2]/div/form/div[2]/input"))
-				.sendKeys("riteshq@live.com");
-		driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div[2]/div/form/div[3]/input")).sendKeys("@Ritesh12");
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div[2]/div/form/div[2]/input")).sendKeys(email);
+		driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div[2]/div/form/div[3]/input")).sendKeys(password);
 		driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div[2]/div/form/div[5]/button")).click();
 
 		Thread.sleep(2000);
@@ -58,9 +68,19 @@ public class App {
 		icon_edit.click();
 
 		Thread.sleep(2000);
+		
+		int randomNumber = rand.nextInt(100);
+		
+		WebElement cCode = driver.findElement(By.id("tel_cCode"));
+		cCode.clear();
+		Thread.sleep(2000);
+		cCode.sendKeys(Integer.toString(randomNumber));
+		Thread.sleep(2000);
 
 		WebElement save_button = driver.findElement(By.id("saveBasicDetailsBtn"));
 		save_button.click();
+		
+		driver.quit();
 
 		//WebElement today_updated_message = driver.findElement(By.xpath("//div//span[contains(text(),\"today\")]"));
 		
