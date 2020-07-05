@@ -1,8 +1,6 @@
 node('master') {
     stage('checkout') {
-        echo '********************************'
-        echo '* Cheking out project from GIT *'
-        echo '********************************'
+        echo $'********************************\n* Cheking out project from GIT *\n********************************'
         git 'https://github.com/riteshtalks/com.git'
     }
     stage('mvnstep') {
