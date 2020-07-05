@@ -4,19 +4,13 @@ node('master') {
         git 'https://github.com/riteshtalks/com.git'
     }
     stage('mvnstep') {
-        echo '*********************'
-        echo '* Doing maven clean *'
-        echo '*********************'
+        echo '*********************\n* Doing maven clean *\n*********************'
         bat 'mvn clean'
-        echo '**********************'
-        echo '* Doing maven deploy *'
-        echo '**********************'
+        echo '**********************\n* Doing maven deploy *\n**********************'
         bat 'mvn deploy'
     }  
     stage('email') {
-        echo '*****************'
-        echo '* Sending Email *'
-        echo '*****************'
+        echo '*****************\n* Sending Email *\n*****************'
        mail bcc: '', body: '''Build run completed. Page updated
         Regards,
         Ritesh A.''', cc: '', from: '', replyTo: '', subject: 'Auto: Build run completed', to: 'riteshq@live.com,ranand@tibco.com'
